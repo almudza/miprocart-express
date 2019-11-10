@@ -1,6 +1,6 @@
 node_modules
 adminbsb
-public/image/
+!public/image/
 public/admin/images/
 public/product_image/
 miprocart-express.zip
