@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <title><%= title %></title>
+  </head>
+  <body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
+        <div class="container">        
+            <a class="navbar-brand" href="/products">CMS CART</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                <% pages.forEach(function(page){ %>
+                    <% if (page.slug == "home") { %>
+                        <li><a class="nav-item nav-link" href="/"><%= page.title %></a></li>
+                    <% } else {%>
+                        <li><a class="nav-item nav-link" href="/<%= page.slug %>"><%= page.title %></a></li>
+                    <% } %>
+                <% }); %>
+                
+                </div>
+                <div class="navbar-nav ml-auto">
+                    <li>
+                        <a class="nav-item nav-link" href="/cart/checkout">My Cart (
+                            <% if (typeof cart !== "undefined") { %>
+                                <%= cart.length %>
+                            <% } else { %>
+                                0
+                            <% } %>
+                        ) </a>
+                    </li>
+                    <% if (user) { %>
+                     <li>
+                        <a class="nav-item nav-link" href="/users/logout">Hi, <%= user.username %> Logout</a>
+                    </li>
+                    <% } else { %>
+                    <li>
+                        <a class="nav-item nav-link" href="/users/register">Register</a>
+                    </li>
+                    <li>
+                        <a class="nav-item nav-link" href="/users/login">Login</a>
+                    </li>
+                    <% } %>
+                    <% if(user && user.admin == 1) { %>
+                    <li>
+                        <a class="nav-item nav-link" target="_blank" href="/admin/pages">Admin</a>
+                    </li>
+                    <% } %>
+                </div>
+            </div>
+        </div>  <!--end container-->
+    </nav> <!-- ende Navbar -->
+    
+    <div class="container">
+        <%- messages('messages', locals) %>
+
+        <% if(errors) { %>
+            <% errors.forEach(function(error) { %>
+                <div class="alert alert-danger">
+                    <%= error.msg %>
+                </div>
+            <% }); %>
+        <% } %>
+
+        <div class="row">
+            
+        
+      
+                <div class="col-md-4">
+                    
+                
+                    <div class="list-group">
+                        <% categories.forEach(function(cat) { %>
+                            <a href="/products/<%= cat.slug %>" class="list-group-item list-group-item-action"> <%= cat.title %> </a>
+                        <% }); %>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    

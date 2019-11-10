@@ -1,0 +1,45 @@
+<%- include('../_layouts/adminheader') %>
+
+<h2 class="page-title">Add a Page</h2>
+
+<a href="/admin/pages" class="btn btn-sm btn-outline-info">Back to all pages</a>
+
+<br><br><br> <hr>
+
+<form action="/admin/pages/add-page" method="post">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" class="form-control" placeholder="Input title" value="<%= title %>">
+    </div>
+    <div class="form-group">
+        <label for="slug">Slug</label>
+        <input type="text" class="form-control" id="slug" name="slug" placeholder="Input Slug" value="<%= slug %>">
+    </div>
+
+    <div class="form-group">
+        <label for="ta">Content</label>
+        <textarea name="content" class="form-control" id="ta" cols="10" rows="10" placeholder="Input Content"><%= content %></textarea>
+    </div>
+
+    <button class="mt-4 btn btn-block btn-outline-success" type="submit">Save</button>
+</form>
+
+<script>
+$(document).ready(function(){
+    $('#title').on('keyup', function() {
+    var theTitle = this.value.toLowerCase().trim(),
+    slugInput = $('#slug'),
+    theSlug = theTitle.replace(/&/g, '-and-')
+           .replace(/[^a-z0-9-]+/g, '-')
+           .replace(/\-\-+/g, '-')
+           .replace(/^-+|-+$/g, '');
+    slugInput.val(theSlug);
+    });
+});
+</script>
+
+
+<%- include('../_layouts/adminfooter') %>
+
+
+

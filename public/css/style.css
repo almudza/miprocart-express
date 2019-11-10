@@ -1,0 +1,53 @@
+/**
+============== all product ==========================
+*/
+img.pimage {
+    width: 160px;
+}
+
+a.pa {
+    display: inline-block;
+    height: 160px;
+}
+
+.row.products .p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+/**
+product detail
+*/
+img.spi {
+    width: 250px;
+    height: 150px;
+}
+
+ul.gallery li {
+    display: inline-block;
+    margin: 20px;
+    list-style: none;
+}
+
+/**
+======== cart checkout  ========
+*/
+img.cpi {
+    width: 160px;
+    height: 100px;
+}
+
+table.alignmiddle td{
+    vertical-align: middle !important;
+}
+
+/**
+============ loggin flash ==============
+*/
+.alert-error {
+    color: red;
+    background-color: whitesmoke;
+    border-color: brown;
+    text-align: center;
+}

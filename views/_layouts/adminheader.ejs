@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/admin-css.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <title>Admin Area</title>
+  </head>
+  <body>
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">        
+                <a class="navbar-brand" href="/admin/pages/dashboard">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="/admin/pages/dashboard">Home</a>
+                    <a class="nav-item nav-link" href="/admin/pages">Pages</a>
+                    <a class="nav-item nav-link" href="/admin/category">Category</a>
+                    <a class="nav-item nav-link" href="/admin/product">Product</a>
+                    </div>
+                    <div class="navbar-nav ml-auto">
+                    <a href="/" target="_blank" class="nav-item nav-link">Front</a>
+                    <a href="/users/logout" class="nav-item nav-link">Logout</a>
+                    </div>
+                </div>
+            </div>  <!--end container-->
+        </nav> <!-- ende Navbar -->
+            
+    <div class="container">
+        <%- messages('messages', locals) %>
+
+        <% if(errors) { %>
+            <% errors.forEach(function(error) { %>
+                <div class="alert alert-danger">
+                    <%= error.msg %>
+                </div>
+            <% }); %>
+        <% } %>
